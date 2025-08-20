@@ -8,10 +8,10 @@
 
 using Catch::Approx;
 
-TEST_CASE("vector_redux_cuda reduces size 12 array increments of 4", "[cuda]") {
+TEST_CASE("vector_redux_cuda reduces size 12 array blocks of 4", "[cuda]") {
     int segments = 3;  // 12 / 4
     int blockSize = 4;
-    // array size 12 with redux (4): 
+    // array size 12 with redux block size of (4): 
     //    1, 2, 3, 4 - 5, 6, 7, 8, - 9, 10, 11, 12
     //    10 - 26 - 42 
     std::vector<float> a = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f};
