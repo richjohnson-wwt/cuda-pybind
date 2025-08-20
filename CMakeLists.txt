@@ -19,8 +19,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(cuda-pybind src/main.cpp)
 
-target_link_libraries(cuda-pybind Catch2::Catch2WithMain pybind11_all_do_not_use)
+# Link with proper pybind11 target (not the internal _all_do_not_use target)
+target_link_libraries(cuda-pybind Catch2::Catch2WithMain pybind11::headers)
 
+# pybind11_add_module automatically handles proper linking - no need to manually link pybind11
 pybind11_add_module(vector_ops src/vector_ops.cpp src/vector_add.cu)
 
 add_subdirectory(test)
