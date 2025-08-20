@@ -6,6 +6,11 @@ if(POLICY CMP0148)
   cmake_policy(SET CMP0148 NEW)
 endif()
 
+# NOTE: This was needed to find pybind installation on vast.ai system!!!
+# Include Conan-generated CMake dependency files
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_BINARY_DIR})
+
 find_package(pybind11 REQUIRED)
 find_package(Catch2 REQUIRED)
 
