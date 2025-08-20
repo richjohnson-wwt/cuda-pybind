@@ -23,7 +23,13 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
     cmake --preset conan-debug
     cmake --build build/debug
 
+To run via Python:
+
     PYTHONPATH=build/debug python src/app.py
+
+To run via C++:
+
+    ./build/debug/cuda-pybind
 
 #### Release Config
 

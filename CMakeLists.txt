@@ -19,7 +19,9 @@ enable_testing()
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(cuda-pybind src/main.cpp)
+# Main executable that demonstrates CUDA vector operations directly
+add_executable(cuda-pybind src/main.cpp src/vector_add.cu)
+target_include_directories(cuda-pybind PRIVATE include)
 
 # Link with proper pybind11 target (not the internal _all_do_not_use target)
 target_link_libraries(cuda-pybind Catch2::Catch2WithMain pybind11::headers)
