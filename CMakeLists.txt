@@ -20,7 +20,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Main executable that demonstrates CUDA vector operations directly
-add_executable(cuda-pybind src/main.cpp src/vector_add.cu)
+add_executable(cuda-pybind src/main.cpp src/vector_add.cu src/vector_redux.cu)
 target_include_directories(cuda-pybind PRIVATE include)
 
 # Link with proper pybind11 target (not the internal _all_do_not_use target)
