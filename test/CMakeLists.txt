@@ -1,18 +1,20 @@
 
 
-
-find_package(Catch2 REQUIRED)
-
+# Test executable for CUDA vector operations
 add_executable(test_vector_add test_vector_add.cpp ../src/vector_add.cu)
 target_include_directories(test_vector_add PRIVATE ../include)
 target_link_libraries(test_vector_add PRIVATE Catch2::Catch2WithMain)
 
-# Enable C++17 (or higher)
+# Enable C++17 (or higher) 
 target_compile_features(test_vector_add PRIVATE cxx_std_17)
 
-# Optional: Add test to `ctest`
-include(CTest)
-include(Catch)
-catch_discover_tests(test_vector_add)
-enable_testing()
+# Register test with CTest
 add_test(NAME CUDA_VectorAdd_Tests COMMAND test_vector_add)
+
+# Try to use Catch2's auto-discovery if available
+if(TARGET Catch2::Catch2)
+  include(Catch)
+  if(COMMAND catch_discover_tests)
+    catch_discover_tests(test_vector_add)
+  endif()
+endif()
