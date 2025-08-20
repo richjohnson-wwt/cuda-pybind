@@ -27,6 +27,6 @@ target_include_directories(cuda-pybind PRIVATE include)
 target_link_libraries(cuda-pybind Catch2::Catch2WithMain pybind11::headers)
 
 # pybind11_add_module automatically handles proper linking - no need to manually link pybind11
-pybind11_add_module(vector_ops src/vector_ops.cpp src/vector_add.cu)
+pybind11_add_module(vector_ops src/vector_ops.cpp src/vector_add.cu src/vector_redux.cu)
 
 add_subdirectory(test)

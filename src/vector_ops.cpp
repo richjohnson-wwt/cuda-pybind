@@ -28,6 +28,21 @@ py::array_t<float> add_vectors_cuda(py::array_t<float> a, py::array_t<float> b) 
     return result;
 }
 
+py::array_t<float> redux_vectors_cuda(py::array_t<float> a, int blockSize, int segments) {
+    auto buf_a = a.request();
+
+    auto result = py::array_t<float>(segments);
+    auto buf_result = result.request();
+
+    const float* ptr_a = static_cast<float*>(buf_a.ptr);
+    float* ptr_result = static_cast<float*>(buf_result.ptr);
+
+    vector_redux_cuda(ptr_a, ptr_result, blockSize, segments);
+
+    return result;
+}
+
 PYBIND11_MODULE(vector_ops, m) {
     m.def("add_vectors", &add_vectors_cuda, "Add two float vectors using CUDA");
+    m.def("redux_vectors", &redux_vectors_cuda, "Redux float vectors using CUDA");
 }
