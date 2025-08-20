@@ -22,3 +22,5 @@ add_executable(cuda-pybind src/main.cpp)
 target_link_libraries(cuda-pybind Catch2::Catch2WithMain pybind11_all_do_not_use)
 
 pybind11_add_module(vector_ops src/vector_ops.cpp src/vector_add.cu)
+
+add_subdirectory(test)

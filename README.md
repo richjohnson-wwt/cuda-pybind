@@ -7,7 +7,7 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
     uv venv
     source .venv/bin/activate
     uv pip install conan
-    uv pip install numpy
+    uv pip install numpy pytest
     conan profile detect
     vi ~/.gitconfig
 
@@ -22,11 +22,6 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
 
     cmake --preset conan-debug
     cmake --build build/debug
-
-    Old way:
-    cd build/debug
-    cmake ../.. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug 
-    cmake --build .
 
     PYTHONPATH=build/debug python src/app.py
 
@@ -43,3 +38,11 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
     cmake --build --preset conan-release
 
     PYTHONPATH=build/release python src/app.py
+
+
+#### Test via Python pytest (from root)
+
+    PYTHONPATH=build/debug pytest src/test_vector_ops.py
+
+#### Test via C++ Catch2 (inside build/debug folder)
+    /workspace/cuda-pybind/build/debug$ ./test/test_vector_add 

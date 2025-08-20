@@ -3,7 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 
-void vector_add_cuda(const float* a, const float* b, float* result, int n);
+#include "../include/vector_add.h"
 
 namespace py = pybind11;
 
