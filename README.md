@@ -18,7 +18,10 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
 
 #### Debug Config
 
-    conan install . --output-folder=build/debug --build=missing --settings=build_type=Debug
+    conan install . \
+        --output-folder=build/debug \
+        --build=missing \
+        --settings=build_type=Debug
 
     cmake --preset conan-debug
     cmake --build build/debug
@@ -36,9 +39,7 @@ To run via C++:
     conan install . \
         --output-folder=build/release \
         --build=missing \
-        --settings=build_type=Release \
-        --generator CMakeDeps \
-        --generator CMakeToolchain
+        --settings=build_type=Release
 
     cmake --preset conan-release
     cmake --build --preset conan-release
@@ -51,4 +52,9 @@ To run via C++:
     PYTHONPATH=build/debug pytest src/test_vector_ops.py
 
 #### Test via C++ Catch2 (inside build/debug folder)
-    /workspace/cuda-pybind/build/debug$ ./test/test_vector_add 
+
+    ./test/test_vector_add 
+
+    or
+
+    ctest
