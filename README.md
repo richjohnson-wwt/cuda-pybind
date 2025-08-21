@@ -4,6 +4,8 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
 
 #### Intial Setup - Do every time a new VM is started
 
+    sudo apt install cmake  # if not already installed
+    sudo apt install nvidia-cuda-toolkit  # if not already installed
     uv venv
     source .venv/bin/activate
     uv pip install conan

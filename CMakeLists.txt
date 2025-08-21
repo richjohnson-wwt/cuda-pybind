@@ -16,7 +16,7 @@ find_package(Catch2 REQUIRED)
 
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Main executable that demonstrates CUDA vector operations directly

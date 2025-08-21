@@ -2,6 +2,9 @@
 catch2/3.6.0
 pybind11/2.13.6
 
+[tool_requires]
+cmake/3.27.9
+
 [generators]
 CMakeDeps
 CMakeToolchain
