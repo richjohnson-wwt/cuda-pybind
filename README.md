@@ -1,6 +1,16 @@
 ## CUDA-Pybind 
 
-This app demonstrates how to integrate Python and C++ in a CUDA application where Python prepares the data and C++ executes the computations on GPU
+This app demonstrates how to do two vector operations that are done in C++ on GPU but setup and called from Python on CPU. 
+
+The main benefits of programming CUDA in C++ are 
+1. performance
+2. low-level control
+3. direct access to GPU hardware
+
+The benefits of using Python with TensorFlow are 
+1. development speed
+2. ease of use
+3. rich ecosystem
 
 #### Intial Setup - Do every time a new VM is started
 
@@ -25,8 +35,12 @@ This app demonstrates how to integrate Python and C++ in a CUDA application wher
         --build=missing \
         --settings=build_type=Debug
 
-    cmake --preset conan-debug
-    cmake --build build/debug
+    cd build/debug
+    cmake ../.. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Debug    
+    cmake --build .
+
+    # cmake --preset conan-debug
+    # cmake --build build/debug
 
 To run via Python:
 
